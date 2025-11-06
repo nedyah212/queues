@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace assignment_2_stack
+namespace assignment_3
 {
 	/// <summary>
 	/// Class that represenets a variable type node

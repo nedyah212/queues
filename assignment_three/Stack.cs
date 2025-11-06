@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace assignment_2_stack
+namespace assignment_3
 {
 	public class Stack<T>
 	{	

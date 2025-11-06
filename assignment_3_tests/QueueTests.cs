@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using NUnit.Framework.Legacy;
 
-namespace TestLibrary
+
+namespace assignment_3
 {
     /// <summary>
     /// QueueTest - A class for testing the Queue class
@@ -29,8 +29,8 @@ namespace TestLibrary
         public void Constructor_head_and_tail_is_null_Test()
         {
             Queue<Point> queue = new Queue<Point>();
-            ClassicAssert.That(queue.Head, Is.Null);
-            ClassicAssert.That(queue.Tail, Is.Null);
+            Assert.That(queue.Head, Is.Null);
+            Assert.That(queue.Tail, Is.Null);
         }
 
         #endregion
@@ -46,7 +46,7 @@ namespace TestLibrary
         {
             Queue<Point> queue = new Queue<Point>();
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(0));
+            Assert.That(queue.Size, Is.EqualTo(0));
         }
         #endregion
 
@@ -60,11 +60,11 @@ namespace TestLibrary
             Point newPoint = new Point(3, 5);
             Queue<Point> queue = new Queue<Point>();
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(0));
+            Assert.That(queue.Size, Is.EqualTo(0));
 
             queue.Enqueue(newPoint);
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(1));
+            Assert.That(queue.Size, Is.EqualTo(1));
         }
 
         /// <summary>
@@ -81,10 +81,10 @@ namespace TestLibrary
             Point headPoint = queue.Head.Element;
             Point tailPoint = queue.Head.Element;
 
-            ClassicAssert.That(headPoint, Is.EqualTo(newPoint));
-            ClassicAssert.That(tailPoint, Is.EqualTo(newPoint));
-            ClassicAssert.That(queue.Head.Next, Is.Null);
-            ClassicAssert.That(queue.Tail.Next, Is.Null);
+            Assert.That(headPoint, Is.EqualTo(newPoint));
+            Assert.That(tailPoint, Is.EqualTo(newPoint));
+            Assert.That(queue.Head.Next, Is.Null);
+            Assert.That(queue.Tail.Next, Is.Null);
         }
 
         /// <summary>
@@ -102,10 +102,10 @@ namespace TestLibrary
 
             Point headPoint = queue.Head.Element;
             Point bottomPoint = queue.Tail.Element;
-            ClassicAssert.That(headPoint, Is.EqualTo(point02));
-            ClassicAssert.That(bottomPoint, Is.EqualTo(point01));
+            Assert.That(headPoint, Is.EqualTo(point02));
+            Assert.That(bottomPoint, Is.EqualTo(point01));
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(2));
+            Assert.That(queue.Size, Is.EqualTo(2));
         }
         #endregion
 
@@ -118,7 +118,7 @@ namespace TestLibrary
         {
             Queue<Point> queue = new Queue<Point>();
 
-            ClassicAssert.That(queue.IsEmpty(), Is.True);
+            Assert.That(queue.IsEmpty(), Is.True);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace TestLibrary
             Queue<Point> queue = new Queue<Point>();
             queue.Enqueue(point01);
 
-            ClassicAssert.That(queue.IsEmpty(), Is.False);
+            Assert.That(queue.IsEmpty(), Is.False);
         }
         #endregion
 
@@ -144,7 +144,7 @@ namespace TestLibrary
         {
             Queue<Point> queue = new Queue<Point>();
 
-            ClassicAssert.That(() => queue.Front(), Throws.Exception.TypeOf<ApplicationException>());
+            Assert.That(() => queue.Front(), Throws.Exception.TypeOf<ApplicationException>());
         }
         /// <summary>
         /// Test Front() to ensure it returns the front node.
@@ -160,9 +160,9 @@ namespace TestLibrary
             Point headPoint = queue.Head.Element;
             Point tailPoint = queue.Tail.Element;
 
-            ClassicAssert.That(returnedPoint, Is.EqualTo(point01));
-            ClassicAssert.That(headPoint, Is.EqualTo(returnedPoint));
-            ClassicAssert.That(tailPoint, Is.EqualTo(returnedPoint));
+            Assert.That(returnedPoint, Is.EqualTo(point01));
+            Assert.That(headPoint, Is.EqualTo(returnedPoint));
+            Assert.That(tailPoint, Is.EqualTo(returnedPoint));
         }
 
         /// <summary>
@@ -182,20 +182,20 @@ namespace TestLibrary
             Point returnedPoint = queue.Front();
             Point headPoint = queue.Head.Element;
 
-            ClassicAssert.That(returnedPoint, Is.EqualTo(point03));
-            ClassicAssert.That(headPoint, Is.EqualTo(returnedPoint));
+            Assert.That(returnedPoint, Is.EqualTo(point03));
+            Assert.That(headPoint, Is.EqualTo(returnedPoint));
 
             // check integrity of queue:
             Point secondPoint = queue.Head.Next.Element;
             Point thirdPoint = queue.Head.Next.Next.Element;
             Node<Point> tailNode = queue.Head.Next.Next;
 
-            ClassicAssert.That(secondPoint, Is.EqualTo(point02));
-            ClassicAssert.That(thirdPoint, Is.EqualTo(point01));
-            ClassicAssert.That(thirdPoint, Is.EqualTo(tailNode.Element));
+            Assert.That(secondPoint, Is.EqualTo(point02));
+            Assert.That(thirdPoint, Is.EqualTo(point01));
+            Assert.That(thirdPoint, Is.EqualTo(tailNode.Element));
 
             // check that the tailNode still points to null!
-            ClassicAssert.That(tailNode.Next, Is.Null);
+            Assert.That(tailNode.Next, Is.Null);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace TestLibrary
 
             Point returnedPoint = queue.Front();
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(1));
+            Assert.That(queue.Size, Is.EqualTo(1));
         }
 
         #endregion
@@ -224,7 +224,7 @@ namespace TestLibrary
         {
             Queue<Point> queue = new Queue<Point>();
 
-            ClassicAssert.That(() => queue.Dequeue(), Throws.Exception.TypeOf<ApplicationException>());
+            Assert.That(() => queue.Dequeue(), Throws.Exception.TypeOf<ApplicationException>());
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace TestLibrary
 
             Point returnedPoint = queue.Dequeue();
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(0));
+            Assert.That(queue.Size, Is.EqualTo(0));
         }
 
         /// <summary>
@@ -257,11 +257,11 @@ namespace TestLibrary
             Point returnedPoint = queue.Dequeue();
             Node<Point> newHead = queue.Head;
 
-            ClassicAssert.That(oldHeadPoint, Is.EqualTo(returnedPoint));
-            ClassicAssert.That(returnedPoint, Is.EqualTo(point01));
+            Assert.That(oldHeadPoint, Is.EqualTo(returnedPoint));
+            Assert.That(returnedPoint, Is.EqualTo(point01));
 
             // list of 1 after a remove is an empty list
-            ClassicAssert.That(queue.IsEmpty());
+            Assert.That(queue.IsEmpty());
         }
 
         /// <summary>
@@ -275,16 +275,16 @@ namespace TestLibrary
             queue.Enqueue(point);
 
             // After an enqueue the size goes from 1 to 0
-            ClassicAssert.That(queue.Size.Equals(1));
+            Assert.That(queue.Size.Equals(1));
             queue.Dequeue();
 
             // Head and tail are null and size is 0
-            ClassicAssert.That(queue.Head, Is.Null);
-            ClassicAssert.That(queue.Tail, Is.Null);
-            ClassicAssert.That(queue.Size.Equals(0));
+            Assert.That(queue.Head, Is.Null);
+            Assert.That(queue.Tail, Is.Null);
+            Assert.That(queue.Size.Equals(0));
 
             // list of 1 after a remove is an empty list
-            ClassicAssert.That(queue.IsEmpty());
+            Assert.That(queue.IsEmpty());
         }
 
         /// <summary>
@@ -309,14 +309,14 @@ namespace TestLibrary
             Node<Point> lastNode = newHead.Next;
             Node<Point> tailNode = queue.Tail;
 
-            ClassicAssert.That(oldHeadPoint, Is.EqualTo(returnedPoint));
-            ClassicAssert.That(returnedPoint, Is.EqualTo(point03));
-            ClassicAssert.That(newHead.Element, Is.EqualTo(point02));
-            ClassicAssert.That(lastNode.Element, Is.EqualTo(point01));
-            ClassicAssert.That(lastNode.Element, Is.EqualTo(tailNode.Element));
-            ClassicAssert.That(lastNode.Next, Is.Null);
+            Assert.That(oldHeadPoint, Is.EqualTo(returnedPoint));
+            Assert.That(returnedPoint, Is.EqualTo(point03));
+            Assert.That(newHead.Element, Is.EqualTo(point02));
+            Assert.That(lastNode.Element, Is.EqualTo(point01));
+            Assert.That(lastNode.Element, Is.EqualTo(tailNode.Element));
+            Assert.That(lastNode.Next, Is.Null);
 
-            ClassicAssert.That(queue.Size, Is.EqualTo(2));
+            Assert.That(queue.Size, Is.EqualTo(2));
         }
         #endregion
 
@@ -331,8 +331,8 @@ namespace TestLibrary
             queue.Enqueue(new Point(3, 5));
             queue.Enqueue(new Point(2, 4));
             queue.Clear();
-            ClassicAssert.That(queue.Head, Is.Null);
-            ClassicAssert.That(queue.IsEmpty());
+            Assert.That(queue.Head, Is.Null);
+            Assert.That(queue.IsEmpty());
         }
         #endregion
 

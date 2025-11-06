@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using NUnit.Framework.Legacy;
 
-namespace TestLibrary
+
+namespace assignment_3
 {
     /// <summary>
     /// PointTest - A class for testing the Point class
@@ -32,9 +32,9 @@ namespace TestLibrary
             int column = 2;
             Point point = new Point(row, column);
 
-            ClassicAssert.That(point, Is.Not.Null);
-            ClassicAssert.That(point.Column, Is.EqualTo(column));
-            ClassicAssert.That(point.Row, Is.EqualTo(row));
+            Assert.That(point, Is.Not.Null);
+            Assert.That(point.Column, Is.EqualTo(column));
+            Assert.That(point.Row, Is.EqualTo(row));
         }
         #endregion
 
@@ -50,7 +50,7 @@ namespace TestLibrary
             Point point = new Point(row, column);
 
             string expectedString = $"[{row}, {column}]";
-            ClassicAssert.That(point.ToString, Is.EqualTo(expectedString));
+            Assert.That(point.ToString, Is.EqualTo(expectedString));
         }
         #endregion
     }
